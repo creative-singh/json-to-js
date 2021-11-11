@@ -9,7 +9,7 @@ app.use(express.json())
 app.get("/fs", (req, res) => {
     const filename = req.body.filename || "config.js";
     var editor = fs.createWriteStream(filename);
-    if(!req.body.data){
+    if (!req.body.data) {
         res.json({
             message: "Bad Request!",
             code: 400
@@ -31,10 +31,14 @@ app.get("/fs", (req, res) => {
     res.send(file).status(200)
 })
 
-app.listen(PORT, (err)=>{
-    if(err){
+app.get("/", (req, res) => {
+    console.log("m working");
+})
+
+app.listen(PORT, (err) => {
+    if (err) {
         console.error(err)
-    }else{
-        console.log("Your app is running on port: ",PORT)
+    } else {
+        console.log("Your app is running on port: ", PORT)
     }
 })
